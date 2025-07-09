@@ -1,0 +1,13 @@
+xversion: 0.0
+Resources:
+  - myApplication:
+      Type: AWS::EKS::Application
+      Properties:
+        ServiceName: brain-tasks-service
+        ClusterName: brain-cluster
+        Namespace: default
+hooks:
+  AfterAllowTestTraffic:
+    - location: scripts/deploy.sh
+      timeout: 300
+      runas: root
